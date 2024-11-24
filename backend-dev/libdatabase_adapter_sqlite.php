@@ -3,22 +3,22 @@
 require_once(__DIR__."/libutil.php");
 
 function libdb_init() {
-    $GLOBALS["db"]=null;
+    $db=$GLOBALS["db"]=null;
 
     require(__DIR__."/libdatabase_adapter_sqlite_secret.php");
 
     if(!is_readable($database_file_path)) {
-        $GLOBALS["db"]=new SQLite3($database_file_path, SQLITE3_OPEN_READWRITE|SQLITE3_OPEN_CREATE, $database_key);
+        $db=$GLOBALS["db"]=new SQLite3($database_file_path, SQLITE3_OPEN_READWRITE|SQLITE3_OPEN_CREATE, $database_key);
         $db->exec(file_get_contents("database_template.sql"));
         if($db->lastErrorCode() != 0) {
             raise_fatal_error("Fatal Error: Database initialization failed: ".$db->lastErrorMsg().". ".basename(__FILE__)."@L".__LINE__."\r\n");
         }
     } else {
-        $GLOBALS["db"]=new SQLite3($database_file_path, SQLITE3_OPEN_READWRITE, $database_key);
+        $db=$GLOBALS["db"]=new SQLite3($database_file_path, SQLITE3_OPEN_READWRITE, $database_key);
     }
     unset($database_file_path);
     unset($database_key);
-    if(!$GLOBALS["db"]) {
+    if(!$db) {
         raise_fatal_error("Fatal Error: Unable to open database file. ".basename(__FILE__)."@L".__LINE__."\r\n");
     }
 }
