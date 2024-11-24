@@ -9,7 +9,7 @@ CREATE TABLE client_id (
 );
 
 CREATE TABLE client_ip (
-    client_ip VARCHAR(255) NOT NULL,
+    client_ip VARCHAR(64) NOT NULL,
     client_id CHAR(32) NOT NULL,
     last_visit_time BIGINT UNSIGNED NOT NULL,
     PRIMARY KEY (client_ip, client_id),
@@ -27,7 +27,7 @@ CREATE TABLE client_hash (
 );
 
 CREATE TABLE register_key (
-    register_key VARCHAR(255) NOT NULL,
+    register_key VARCHAR(64) NOT NULL,
     client_id CHAR(32) DEFAULT NULL,
     register_time BIGINT UNSIGNED NOT NULL,
     PRIMARY KEY (register_key, register_time),
