@@ -9,7 +9,7 @@ CREATE TABLE client_id (
 );
 
 CREATE TABLE client_ip (
-    client_ip VARCHAR(39) NOT NULL,
+    client_ip VARCHAR(255) NOT NULL,
     client_id CHAR(32) NOT NULL,
     last_visit_time BIGINT UNSIGNED NOT NULL,
     PRIMARY KEY (client_ip, client_id),
