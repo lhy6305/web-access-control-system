@@ -1,0 +1,43 @@
+
+applePay: { value: -1, duration: 0 } // unstable
+architecture: { value: 255, duration: 0 } // stable
+audio: { value: 35.749972093850374, duration: 11 } // stable for long time but may change
+audioBaseLatency: { value: -2, duration: 0 } // stable for long time but may change
+canvas: { value: { winding: true, geometry: "...", text: "..." }, duration: 4 } // stable for long time but may change
+colorDepth: { value: 24, duration: 0 } // stable
+colorGamut: { value: "srgb", duration: 0 } // stable
+contrast: { value: 0, duration: 0 } // unstable
+cookiesEnabled: { value: true, duration: 0 } // assert true
+cpuClass: { value: undefined, duration: 0 } // stable unless not set
+deviceMemory: { value: undefined, duration: 0 } // stable unless not set
+domBlockers: { value: undefined, duration: 15 } // unstable
+fontPreferences: { value: {…}, duration: 32 } // unstable
+fonts: { value: (19) […], duration: 28 } // unstable
+forcedColors: { value: false, duration: 0 } // unstable
+hardwareConcurrency: { value: 16, duration: 0 } // stable
+hdr: { value: false, duration: 0 } // stable for long time but may change
+indexedDB: { value: true, duration: 0 } // stable for long time but may change
+invertedColors: { value: undefined, duration: 0 } // stable for long time but may change
+languages: { value: (2) […], duration: 0 } // stable for long time but may change
+localStorage: { value: true, duration: 0 } // stable for long time but may change
+math: { value: {…}, duration: 0 } // stable for long time but may change
+monochrome: { value: 0, duration: 0 } // stable for long time but may change
+openDatabase: { value: false, duration: 0 } // stable for long time but may change
+osCpu: { value: "Windows NT 10.0; Win64; x64", duration: 0 } // stable unless not set
+pdfViewerEnabled: { value: true, duration: 0 } // stable for long time but may change
+platform: { value: "Win32", duration: 0 } // stable unless not set
+plugins: { value: (5) […], duration: 0 } // stable for long time but may change
+privateClickMeasurement: { value: undefined, duration: 0 } // unstable
+reducedMotion: { value: true, duration: 0 } // unstable
+reducedTransparency: { value: undefined, duration: 0 } // unstable
+screenFrame: { value: (4) […], duration: 1 } // stable for long time but may change
+screenResolution: { value: (2) […], duration: 0 } // stable for long time but may change
+sessionStorage: { value: true, duration: 0 } // stable for long time but may change
+timezone: { value: "Asia/Shanghai", duration: 0 } // stable for long time but may change
+touchSupport: { value: {…}, duration: 1 } // stable for long time but may change
+vendor: { value: "", duration: 0 } // stable for long time but may change
+vendorFlavors: { value: [], duration: 0 } // stable for long time but may change
+webGlBasics: { value: { version, vendor, vendorUnmasked, renderer, rendererUnmasked, shadingLanguageVersion }, duration: 2 } // stable for long time but may change
+webGlExtensions: { value: { contextAttributes, parameters, shaderPrecisions, extensions, extensionParameters, unsupportedExtensions }, duration: 4 } // stable for long time but may change
+
+vhash: "00000000000000000000000000000000"
