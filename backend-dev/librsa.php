@@ -16,8 +16,8 @@ $rn="0b".$rn;
 return gmp_nextprime($rn);
 }
 
-function librsa_pow($m,$e,$n){
-return gmp_powm($m,$e,$n);
+function librsa_powmod($a,$b,$n){
+return gmp_powm($a,$b,$n);
 }
 
 function librsa_get_d($e,$p,$q){
@@ -43,7 +43,7 @@ $d=librsa_get_d($e,$p,$q);
 
 $r=gmp_random_range(2,gmp_sub($n,1));
 $r=gmp_mod($r,$n);
-if((string)librsa_pow(librsa_pow($r,$e,$n),$d,$n)!==(string)$r){
+if((string)librsa_powmod(librsa_powmod($r,$e,$n),$d,$n)!==(string)$r){
 return false;
 }
 
@@ -53,5 +53,3 @@ $r["d"]=(string)$d;
 $r["n"]=(string)$n;
 return $r;
 }
-
-var_dump(librsa_create_rsa(0x10001,1024));
