@@ -11,6 +11,25 @@
     api.FingerprintJS=null;
     api.CryptoJS=null;
 
+    api.libcryptoutil_init=async function() {
+        await new Promise(function(resolve, reject) {
+            var interval=window.setInterval(function() {
+                try {
+                    if(window.libcryptoutil) {
+                        window.clearInterval(interval);
+                        interval=null;
+                        resolve();
+                    }
+                } catch {}
+            }, 100);
+        });
+        api.libcryptoutil=window.libcryptoutil;
+        delete window.libcryptoutil;
+
+        delete api.libcryptoutil_init;
+        window.console.log("libcryptoutil_init() done");
+    };
+
     api.libutil_init=async function() {
         await new Promise(function(resolve, reject) {
             var interval=window.setInterval(function() {
@@ -177,6 +196,7 @@
         await api.fingerprintjs_init();
         await api.cryptojs_init();
         await api.libutil_init();
+        await api.libcryptoutil_init();
         await api.libui_init();
 
         api.libui.clear_document_content();
