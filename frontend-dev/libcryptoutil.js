@@ -22,8 +22,7 @@
     };
 
     libcryptoutil.str_to_long = function(s) {
-        var e = new TextEncoder();
-        var b = e.encode(s);
+        var b = (new window.TextEncoder()).encode(s);
         var r = bi("0");
 
         for(var i = 0; i < b.length; i++) {
@@ -34,16 +33,31 @@
     };
 
     libcryptoutil.long_to_str=function(l) {
+        if(typeof l === "string") {
+            l = bi(l);
+        }
+
+        if(typeof l === "number") {
+            l = bi(l);
+        }
+
+        if(typeof l !== "bigint") {
+            console.error("libcryptoutil.long_to_str: input must be a String, Number, or BigInt");
+            return false;
+        }
         var b = [];
         while(l > 0) {
             b.unshift(Number(l & bi("255")));
             l >>= bi("8");
         }
 
-        var d = new TextDecoder("utf-8");
-        var u = new Uint8Array(b);
-        return d.decode(u);
-    }
+        try {
+            return (new window.TextDecoder("utf-8", {"fatal":true})).decode(new window.Uint8Array(b));
+        } catch(e) {
+            window.console.error(e);
+            return false;
+        }
+    };
 
     window.libcryptoutil=libcryptoutil;
 
