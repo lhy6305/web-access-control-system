@@ -63,73 +63,55 @@ function gen_rand_id($len=32){
 return substr(bin2hex(random_bytes(ceil($len/2))),0,$len);
 }
 
-function safe_string_compare($a,$b){
-$res=true;
-if(!(is_string($a)&&is_string($b))){
-$res=false;
-raise_fatal_error("Fatal Error: safe_string_compare(): at least one param provided is not a string. ".basename(__FILE__)."@L".__LINE__."\r\n");
-}
-if(strlen($a)!==strlen($b)){
-$res=false;
-}
-$c=max(strlen($a),strlen($b));
-$d=strlen($a);
-$e=strlen($b);
-for($f=0;$f<$c;$f++){
-$res=$res&&!(ord($a[$f%$d])^ord($b[$f%$e]));
-}
-return $res;
-}
-
-function file_put_contents_with_lock($filename, $data) {
-$handle=fopen($filename, "c+");
-if($handle===false) {
+function file_put_contents_with_lock($filename,$data) {
+$handle=fopen($filename,"c+");
+if($handle===false){
 trigger_error("file_put_contents_with_lock: failed to open file ".$filename, E_USER_WARNING);
 return false;
 }
-if(!flock($handle, LOCK_EX)) {
+if(!flock($handle,LOCK_EX)){
 trigger_error("file_put_contents_with_lock: failed to lock file ".$filename." after fopen(...)", E_USER_WARNING);
 fclose($handle);
 return false;
 }
-ftruncate($handle, 0);
+ftruncate($handle,0);
 rewind($handle);
-$result=fwrite($handle, $data);
-if($result===false) {
+$result=fwrite($handle,$data);
+if($result===false){
 trigger_error("file_put_contents_with_lock: failed to write file content of ".$filename, E_USER_WARNING);
-} else {
+}else{
 fflush($handle);
 }
-flock($handle, LOCK_UN);
+flock($handle,LOCK_UN);
 fclose($handle);
 return $result;
 }
 
 function file_get_contents_with_lock($filename) {
-if(!file_exists($filename) || !is_readable($filename)) {
+if(!file_exists($filename)||!is_readable($filename)) {
 trigger_error("file_get_contents_with_lock: file ".$filename." not exists or is not readable", E_USER_WARNING);
 return false;
 }
-$handle=fopen($filename, "rb");
-if($handle===false) {
+$handle=fopen($filename,"rb");
+if($handle===false){
 trigger_error("file_get_contents_with_lock: failed to open file ".$filename, E_USER_WARNING);
 return false;
 }
-if(!flock($handle, LOCK_SH)) {
+if(!flock($handle,LOCK_SH)){
 trigger_error("file_get_contents_with_lock: failed to lock file ".$filename." after fopen(...)", E_USER_WARNING);
 fclose($handle);
 return false;
 }
 $fsize=filesize($filename);
 $data=false;
-if($fsize===false) {
+if($fsize===false){
 trigger_error("file_get_contents_with_lock: failed to get size of ".$filename, E_USER_WARNING);
-} else if($fsize==0) {
+}else if($fsize==0){
 $data="";
-} else {
-$data=fread($handle, $fsize);
+}else{
+$data=fread($handle,$fsize);
 }
-flock($handle, LOCK_UN);
+flock($handle,LOCK_UN);
 fclose($handle);
 return $data;
 }

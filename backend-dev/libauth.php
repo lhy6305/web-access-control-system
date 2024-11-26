@@ -2,6 +2,7 @@
 
 
 require_once(__DIR__."/libutil.php");
+require_once(__DIR__."/libcryptoutil.php");
 require_once(__DIR__."/libhmac_algo.php");
 require_once(__DIR__."/libdatabase_adapter_sqlite.php");
 
