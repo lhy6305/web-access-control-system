@@ -5,6 +5,28 @@
     var bi = window.BigInt;
 
     libcryptoutil.powmod = function(a, b, n) {
+        if(typeof a === "string"||typeof a === "number") {
+            a = bi(a);
+        }
+        if(typeof a !== "bigint") {
+            console.error("input must be a String, Number, or BigInt");
+            return false;
+        }
+        if(typeof b === "string"||typeof b === "number") {
+            b = bi(b);
+        }
+        if(typeof b !== "bigint") {
+            console.error("input must be a String, Number, or BigInt");
+            return false;
+        }
+        if(typeof n === "string"||typeof n === "number") {
+            n = bi(n);
+        }
+        if(typeof n !== "bigint") {
+            console.error("input must be a String, Number, or BigInt");
+            return false;
+        }
+
         a = a % n;
         var r = bi("1");
         var x = a;
@@ -33,16 +55,11 @@
     };
 
     libcryptoutil.long_to_str=function(l) {
-        if(typeof l === "string") {
+        if(typeof l === "string"||typeof l === "number") {
             l = bi(l);
         }
-
-        if(typeof l === "number") {
-            l = bi(l);
-        }
-
         if(typeof l !== "bigint") {
-            console.error("libcryptoutil.long_to_str: input must be a String, Number, or BigInt");
+            console.error("input must be a String, Number, or BigInt");
             return false;
         }
         var b = [];
