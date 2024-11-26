@@ -26,7 +26,6 @@
             console.error("input must be a String, Number, or BigInt");
             return false;
         }
-
         a = a % n;
         var r = bi("1");
         var x = a;
@@ -46,11 +45,9 @@
     libcryptoutil.str_to_long = function(s) {
         var b = (new window.TextEncoder()).encode(s);
         var r = bi("0");
-
         for(var i = 0; i < b.length; i++) {
             r = (r << bi("8")) | bi(b[i].toString());
         }
-
         return r;
     };
 
@@ -67,7 +64,6 @@
             b.unshift(Number(l & bi("255")));
             l >>= bi("8");
         }
-
         try {
             return (new window.TextDecoder("utf-8", {"fatal":true})).decode(new window.Uint8Array(b));
         } catch(e) {
