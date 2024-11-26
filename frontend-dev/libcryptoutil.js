@@ -1,7 +1,7 @@
 (async function() {
     "use strict";
 
-    var libcryptoutil= Object.create(null);
+    var libcryptoutil = Object.create(null);
     var bi = window.BigInt;
 
     libcryptoutil.powmod = function(a, b, n) {

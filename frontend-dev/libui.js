@@ -1,7 +1,7 @@
 (async function() {
     "use strict";
 
-    await new Promise(function(resolve, reject) {
+    await new window.Promise(function(resolve, reject) {
         var interval=window.setInterval(function() {
             try {
                 if(window.libapi) {

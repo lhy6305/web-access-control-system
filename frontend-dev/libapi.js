@@ -1,9 +1,9 @@
 (async function() {
     "use strict";
 
-    var api= Object.create(null);
+    var api=Object.create(null);
 
-    api.temp_vars= Object.create(null);
+    api.temp_vars=Object.create(null);
 
     api.client_fingerprint=null;
 
@@ -12,7 +12,7 @@
     api.CryptoJS=null;
 
     api.libcryptoutil_init=async function() {
-        await new Promise(function(resolve, reject) {
+        await new window.Promise(function(resolve, reject) {
             var interval=window.setInterval(function() {
                 try {
                     if(window.libcryptoutil) {
@@ -31,7 +31,7 @@
     };
 
     api.libutil_init=async function() {
-        await new Promise(function(resolve, reject) {
+        await new window.Promise(function(resolve, reject) {
             var interval=window.setInterval(function() {
                 try {
                     if(window.libutil) {
@@ -50,7 +50,7 @@
     };
 
     api.libui_init=async function() {
-        await new Promise(function(resolve, reject) {
+        await new window.Promise(function(resolve, reject) {
             var interval=window.setInterval(function() {
                 try {
                     if(window.libui) {
@@ -69,7 +69,7 @@
     };
 
     api.cryptojs_init=async function() {
-        await new Promise(function(resolve, reject) {
+        await new window.Promise(function(resolve, reject) {
             var interval=window.setInterval(function() {
                 try {
                     if(window.CryptoJS) {
@@ -88,7 +88,7 @@
     };
 
     api.fingerprintjs_init=async function() {
-        await new Promise(function(resolve, reject) {
+        await new window.Promise(function(resolve, reject) {
             var interval=window.setInterval(function() {
                 try {
                     if(window.FingerprintJS) {
